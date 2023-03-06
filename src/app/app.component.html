@@ -1,0 +1,107 @@
+<!--<div cdkDropListGroup class="container">-->
+<!--  <div cdkDropList class="example-container drop-list" (cdkDropListDropped)="onDrop(sourceItem, $event)">-->
+<!--    <div *ngFor="let item of sourceItem" cdkDrag class="example-list drag-item">{{ item.name }}</div>-->
+<!--  </div>-->
+
+<!--  <section>-->
+<!--    <button type="button"> > </button>-->
+<!--    <button type="button"> < </button>-->
+<!--  </section>-->
+
+<!--  <div cdkDropList class="example-container drop-list2" (cdkDropListDropped)="onDrop(targetItem, $event)">-->
+<!--    <div *ngFor="let item of targetItem" cdkDrag class="example-list drag-item">{{ item.name }}</div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div cdkDropListGroup>-->
+<!--  <div class="example-container">-->
+<!--    <h2>Available items</h2>-->
+
+<!--    <div-->
+<!--      cdkDropList-->
+<!--      [cdkDropListData]="sourceItem"-->
+<!--      class="example-list"-->
+<!--      cdkDropListSortingDisabled-->
+<!--      (cdkDropListDropped)="onDrop(sourceItem, $event)">-->
+<!--      <div (click)="onSelectItem($event)" class="example-box" *ngFor="let item of sourceItem" cdkDrag>{{item.name}}</div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="example-container">-->
+<!--    <h2>Shopping basket</h2>-->
+
+<!--    <div-->
+<!--      cdkDropList-->
+<!--      [cdkDropListData]="targetItem"-->
+<!--      class="example-list"-->
+<!--      (cdkDropListDropped)="onDrop(targetItem, $event)">-->
+<!--      <div (click)="onSelectItem($event)" class="example-box" *ngFor="let item of targetItem" cdkDrag>{{item.name}}</div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div style="display:flex;">
+  <div (drop)="onDrop(sourceItem, $event, 'SOURCE')" (dragover)="onDragOver($event)">
+    <ul class="drop-list3">
+      <li
+        class="list-item3"
+        draggable="true"
+        (click)="onSelectItem($event, i)"
+        (dragstart)="onDragStart($event, 'SOURCE')"
+        *ngFor="let item of sourceItem; let i =index">{{item.name}}</li>
+    </ul>
+  </div>
+
+  <section style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+    <button class="list-nav-btn" type="button"> ></button>
+    <button class="list-nav-btn" type="button"> <</button>
+  </section>
+
+
+  <div (drop)="onDrop(targetItem, $event, 'TARGET')" (dragover)="onDragOver($event)">
+    <ul class="drop-list3">
+      <li
+        class="list-item3"
+        draggable="true"
+        (click)="onSelectItem($event, i)"
+        (dragstart)="onDragStart($event, 'TARGET')"
+        *ngFor="let item of targetItem; let i = index">{{item.name}}</li>
+    </ul>
+  </div>
+</div>
+
+<div style="margin-top: 500px"></div>
+
+
+<!--<div style="display:flex;">-->
+<!--  <section (drop)="onDrop(sourceItem, $event)" (dragover)="onDragOver($event)" class="source-item">-->
+<!--    <h3>선택 전 컬럼(N)</h3>-->
+<!--    <input type="text" placeholder="검색">-->
+<!--    <ul class="child select-option">-->
+<!--      <li-->
+<!--        draggable="true"-->
+<!--        [id]="item.id"-->
+<!--        *ngFor="let item of sourceItem; let i = index"-->
+<!--        (click)="selectOption($event, i)">{{item.name}}</li>-->
+<!--    </ul>-->
+<!--  </section>-->
+
+<!--  <section>-->
+<!--    버튼 조작-->
+<!--  </section>-->
+<!--  <section (drop)="onDrop(targetItem, $event)" (dragover)="onDragOver($event)" class="target-item">-->
+<!--    <h3>선택 된 컬럼(N)</h3>-->
+<!--    <input type="text" placeholder="검색">-->
+<!--    <ul class="child select-option">-->
+<!--      <li-->
+<!--        draggable="true"-->
+<!--        *ngFor="let item of targetItem; let i = index"-->
+<!--        [id]="item.id"-->
+
+<!--        (click)="selectOption($event, i)">{{item.name}}</li>-->
+<!--    </ul>-->
+<!--  </section>-->
+<!--</div>-->
+
