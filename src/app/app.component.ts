@@ -22,9 +22,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   targetItem: any[] = [{id: 1, name: 'abc'},];
 
-  @ViewChild('sourceSelect') sourceSelect!: ElementRef;
-  @ViewChild('targetSelect') targetSelect!: ElementRef;
-
   constructor() {
   }
 
@@ -38,6 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   onDragStart(e: any, curTarget: DragGenerationTarget): void {
+    console.log('11')
     this.currentDragItem = e.target;
     this.currentDragTarget = curTarget;
   }
@@ -48,11 +46,19 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onDrop(itemList: any, event: any, dropTarget: DragGenerationTarget): void {
-
     // left list 는 자기 자신에서 정렬을 할 수 없다.
     if (this.currentDragTarget === 'SOURCE' && dropTarget === 'SOURCE') {
       return;
     }
+
+    console.log(this.currentDragItem);
+    this.sourceItem = this.sourceItem.filter(item => {
+      console.log(item)
+      if (item.id === parseInt(this.currentDragItem!.id, 10)) {
+        this.targetItem.push(item);
+      }
+      return item.id !== parseInt(this.currentDragItem!.id, 10);
+    });
 
   }
 
@@ -72,4 +78,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.selectedItem.push(e.target);
   }
+
+
+
 }

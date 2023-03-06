@@ -4,6 +4,7 @@
       <li
         class="list-item3"
         draggable="true"
+        [id]="item.id"
         (click)="onSelectItem($event, i)"
         (dragstart)="onDragStart($event, 'SOURCE')"
         *ngFor="let item of sourceItem; let i =index">{{item.name}}</li>
@@ -21,6 +22,7 @@
       <li
         class="list-item3"
         draggable="true"
+        [id]="item.id"
         (click)="onSelectItem($event, i)"
         (dragstart)="onDragStart($event, 'TARGET')"
         *ngFor="let item of targetItem; let i = index">{{item.name}}</li>
@@ -31,3 +33,12 @@
 <div style="margin-top: 500px"></div>
 
 
+
+
+<select multiple style="width:300px;">
+  <option><div draggable="true" (dragstart)="onDragStart($event, 'SOURCE')">1</div></option>
+  <option (dragstart)="onDragStart($event, 'SOURCE')" draggable="true">2</option>
+  <option (dragstart)="onDragStart($event, 'SOURCE')" draggable="true">3</option>
+  <option (dragstart)="onDragStart($event, 'SOURCE')" draggable="true">4</option>
+  <option (dragstart)="onDragStart($event, 'SOURCE')" draggable="true">5</option>
+</select>
