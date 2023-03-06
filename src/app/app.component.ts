@@ -36,27 +36,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
-  selectOption(e: any, i: number): void {
-    console.log(e);
-    console.log(i)
-
-    console.log(e.shiftKey);
-
-    if (!e.ctrlKey && !e.shiftKey) {
-      if (this.selectedItem!.length > 0) {
-        this.selectedItem?.forEach(el => {
-          el.classList.remove('selected');
-        })
-      }
-    }
-
-
-    // Add the 'selected' class to the clicked item
-    e.target.classList.add('selected');
-
-    // Store a reference to the clicked item as the new selected item
-    this.selectedItem.push(e.target);
-  }
 
   onDragStart(e: any, curTarget: DragGenerationTarget): void {
     this.currentDragItem = e.target;
@@ -78,9 +57,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onSelectItem(e: any, i: number): void {
-    console.log(e);
-    console.log(i)
 
+    // 다른 li 요소를 클릭 했을 때는 한가지만 선택 되도록 기존 선택된 요소를 제거해준다.
     if (!e.ctrlKey && !e.shiftKey) {
       if (this.selectedItem!.length > 0) {
         this.selectedItem?.forEach(el => {
@@ -90,10 +68,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
 
-    // Add the 'selected' class to the clicked item
     e.target.classList.add('selected');
 
-    // Store a reference to the clicked item as the new selected item
     this.selectedItem.push(e.target);
   }
 }
